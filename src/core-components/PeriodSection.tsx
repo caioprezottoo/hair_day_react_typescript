@@ -4,6 +4,7 @@ import Text from '../components/Text'
 import CalendarBlank from '../assets/icons/CalendarBlank.svg?react'
 import UserSquare from '../assets/icons/UserSquare.svg?react'
 import Button from '../components/Button'
+import TimeSelect from '../components/TimeSelect'
 
 export default function PeriodSection() {
     return (
@@ -22,7 +23,25 @@ export default function PeriodSection() {
                 <Input icon={CalendarBlank} type='date' />
             </div>
 
-            {/* <div></div> --> FAZER HORÁRIOS */}
+            <div>
+                <Text as='h1' variant={"title-md"}>Horários</Text>
+                <Text as='p'>Manhã</Text>
+                <TimeSelect>09:00</TimeSelect>
+                <TimeSelect>10:00</TimeSelect>
+                <TimeSelect>11:00</TimeSelect>
+                <TimeSelect>12:00</TimeSelect>
+                <Text as='p'>Tarde</Text>
+                <TimeSelect>13:00</TimeSelect>
+                <TimeSelect>14:00</TimeSelect>
+                <TimeSelect>15:00</TimeSelect>
+                <TimeSelect>16:00</TimeSelect>
+                <TimeSelect>17:00</TimeSelect>
+                <TimeSelect>18:00</TimeSelect>
+                <Text as='p'>Noite</Text>
+                <TimeSelect>19:00</TimeSelect>
+                <TimeSelect>20:00</TimeSelect>
+                <TimeSelect>21:00</TimeSelect>
+            </div>
 
             <div className="w-full">
                 <Text variant={"title-md"}>Cliente</Text>
