@@ -7,7 +7,7 @@ export const textVariants = cva("font-sans", {
             "text-md": "text-base leading-6 font-normal text-gray-200",
             "title-sm": "text-sm leading-5 font-bold text-gray-100",
             "title-md": "text-base leading-6 font-bold text-gray-100",
-            "title-lg": "text-3xl leading-6 font-bold text-gray-100 m-1",
+            "title-lg": "text-2xl leading-6 font-bold text-gray-100 m-1",
         }
     },
     defaultVariants: {

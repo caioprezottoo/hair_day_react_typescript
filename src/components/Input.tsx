@@ -17,10 +17,14 @@ export default function Input({ className, icon: IconSvg, ...props }: InputProps
                 />
             )}
             <input
-                className={`h-12 p-3 pl-10 inline-flex items-center justify-center 
-                gap-2 self-stretch rounded-lg border border-solid
-                border-gray-500 focus:border-yellow-dark
-                text-gray-200 outline-none ${className}`}
+                className={`h-12 p-3 pl-10 inline-flex items-start
+                    gap-2 self-stretch rounded-lg border border-solid
+                    border-gray-500 focus:border-yellow-dark
+                    text-gray-200 outline-none my-2
+                    [&::-webkit-calendar-picker-indicator]:hidden
+                    [&::-webkit-inner-spin-button]:hidden 
+                    ${className}
+                `}
                 {...props}
             />
         </div>
