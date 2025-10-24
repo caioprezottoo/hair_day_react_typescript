@@ -6,13 +6,14 @@ interface ContainerProps extends React.ComponentProps<"div">, VariantProps<typeo
     as?: keyof React.JSX.IntrinsicElements
 }
 
-export default function Container({ as = "div", children, className, ...props }: ContainerProps) {
+export default function Container({ as = "div", size, children, className, ...props }: ContainerProps) {
     return React.createElement(
         as,
         {
-            className: containerVariants({ size: "md", className }),
+            className: containerVariants({ size, className }),
             ...props
         },
         children
     )
 }
+
