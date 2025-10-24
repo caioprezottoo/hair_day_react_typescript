@@ -4,6 +4,7 @@ import { containerVariants } from '../variants/container-variants'
 
 interface ContainerProps extends React.ComponentProps<"div">, VariantProps<typeof containerVariants> {
     as?: keyof React.JSX.IntrinsicElements
+    className?: string
 }
 
 export default function Container({ as = "div", size, children, className, ...props }: ContainerProps) {
