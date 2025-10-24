@@ -19,14 +19,14 @@ export default function PeriodSection() {
 
             <div className="w-full">
                 <Text variant={"title-md"}>Data</Text>
-                <Input icon={CalendarBlank} type='date' className='w-full' />
+                <Input icon={CalendarBlank} type='date' />
             </div>
 
             {/* <div></div> --> FAZER HORÁRIOS */}
 
             <div className="w-full">
                 <Text variant={"title-md"}>Cliente</Text>
-                <Input icon={UserSquare} placeholder='Nome' className='w-full' />
+                <Input icon={UserSquare} placeholder='Nome' />
             </div>
 
             <div>

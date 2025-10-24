@@ -17,7 +17,7 @@ export default function Input({ className, icon: IconSvg, ...props }: InputProps
                 />
             )}
             <input
-                className={`h-12 p-3 pl-10 inline-flex items-start
+                className={`w-full h-12 p-3 pl-10 inline-flex items-start
                     gap-2 self-stretch rounded-lg border border-solid
                     border-gray-500 focus:border-yellow-dark
                     text-gray-200 outline-none my-2
