@@ -1,5 +1,5 @@
-import AppointmentSection from "../core-components/AppointmentSection";
-import PeriodSection from "../core-components/PeriodSection";
+import AppointmentSection from "./AppointmentSection";
+import PeriodSection from "./PeriodSection";
 
 export default function MainPage() {
   return (

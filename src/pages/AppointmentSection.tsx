@@ -1,7 +1,7 @@
 import Input from '../components/Input'
 import Text from '../components/Text'
 import CalendarBlank from '../assets/icons/CalendarBlank.svg?react'
-
+import AppointmentDisplay from '../core-components/AppointmentDisplay'
 
 export default function AppointmentSection() {
     return (
@@ -14,6 +14,10 @@ export default function AppointmentSection() {
                 <div>
                     <Input icon={CalendarBlank} type='date' />
                 </div>
+            </div>
+
+            <div>
+                <AppointmentDisplay />
             </div>
         </section>
     )
