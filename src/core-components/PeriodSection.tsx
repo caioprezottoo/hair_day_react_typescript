@@ -5,11 +5,12 @@ import CalendarBlank from '../assets/icons/CalendarBlank.svg?react'
 import UserSquare from '../assets/icons/UserSquare.svg?react'
 import Button from '../components/Button'
 import TimeSelect from '../components/TimeSelect'
+import { TIME_SLOTS } from '../data/timeSlots'
 
 export default function PeriodSection() {
     return (
         <Container className={`
-                inline-flex p-20 flex-col items-start gap-6 
+                inline-flex p-20 flex-col gap-6 
                 shrink-0 bg-gray-700 rounded-xl
             `}
         >
@@ -25,22 +26,20 @@ export default function PeriodSection() {
 
             <div>
                 <Text as='h1' variant={"title-md"}>Horários</Text>
-                <Text as='p'>Manhã</Text>
-                <TimeSelect>09:00</TimeSelect>
-                <TimeSelect>10:00</TimeSelect>
-                <TimeSelect>11:00</TimeSelect>
-                <TimeSelect>12:00</TimeSelect>
-                <Text as='p'>Tarde</Text>
-                <TimeSelect>13:00</TimeSelect>
-                <TimeSelect>14:00</TimeSelect>
-                <TimeSelect>15:00</TimeSelect>
-                <TimeSelect>16:00</TimeSelect>
-                <TimeSelect>17:00</TimeSelect>
-                <TimeSelect>18:00</TimeSelect>
-                <Text as='p'>Noite</Text>
-                <TimeSelect>19:00</TimeSelect>
-                <TimeSelect>20:00</TimeSelect>
-                <TimeSelect>21:00</TimeSelect>
+                {TIME_SLOTS.map(({ period, times }) => (
+                    <div key={period} className="mt-4">
+                        <Text as='p' variant="text-sm" className='mb-2'>
+                            {period}
+                        </Text>
+                        <div className="flex flex-wrap gap-2">
+                            {times.map((time) => (
+                                <TimeSelect key={time}>
+                                    {time}
+                                </TimeSelect>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
 
             <div className="w-full">
@@ -51,6 +50,6 @@ export default function PeriodSection() {
             <div>
                 <Button>AGENDAR</Button>
             </div>
-        </Container>
+        </Container >
     )
 }
