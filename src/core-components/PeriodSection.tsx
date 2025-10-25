@@ -10,7 +10,7 @@ import { TIME_SLOTS } from '../data/timeSlots'
 export default function PeriodSection() {
     return (
         <Container className={`
-                inline-flex p-20 flex-col gap-6 
+                inline-flex p-20 flex-col gap-6 m-4
                 shrink-0 bg-gray-700 rounded-xl
             `}
         >
