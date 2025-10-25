@@ -6,8 +6,15 @@ import UserSquare from '../assets/icons/UserSquare.svg?react'
 import Button from '../components/Button'
 import TimeSelect from '../components/TimeSelect'
 import { TIME_SLOTS } from '../data/timeSlots'
+import { useState } from 'react'
 
 export default function PeriodSection() {
+    const [selectedTime, setSelectedTime] = useState<string | null>(null)
+
+    const handleTimeSelect = (time: string) => {
+        setSelectedTime(time)
+    }
+
     return (
         <Container className={`
                 inline-flex p-20 flex-col gap-6 m-4
@@ -33,7 +40,11 @@ export default function PeriodSection() {
                         </Text>
                         <div className="flex flex-wrap gap-2">
                             {times.map((time) => (
-                                <TimeSelect key={time}>
+                                <TimeSelect
+                                    key={time}
+                                    variant={selectedTime === time ? "active" : "default"}
+                                    onClick={() => handleTimeSelect(time)}
+                                >
                                     {time}
                                 </TimeSelect>
                             ))}
