@@ -1,73 +1,130 @@
-# React + TypeScript + Vite
+# 💈 Barber Shop Scheduling System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and intuitive appointment scheduling system built for barber shops. This application allows barbers to manage their daily appointments efficiently with a clean and user-friendly interface.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Create Appointments**: Schedule new appointments by selecting date, time, and client name
+- **View Appointments**: Visualize all appointments organized by time periods (Morning, Afternoon, Night)
+- **Delete Appointments**: Cancel appointments with confirmation dialog
+- **Date Filtering**: Filter appointments by specific dates
+- **Time Slots**: Pre-defined time slots for different periods of the day
+- **Responsive Design**: Clean and modern UI built with Tailwind CSS
 
-## React Compiler
+## 🛠️ Technologies
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **React** - UI library
+- **TypeScript** - Type safety and better developer experience
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **Context API** - State management
+- **SVG React Components** - Icon system
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📁 Project Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── assets/
+│   └── icons/          # SVG icons
+├── components/         # Reusable UI components
+│   ├── Button.tsx
+│   ├── ButtonIcon.tsx
+│   ├── Container.tsx
+│   ├── Icon.tsx
+│   ├── Input.tsx
+│   ├── Text.tsx
+│   └── TimeSelect.tsx
+├── contexts/
+│   └── AppointmentContext.tsx  # Global state management
+├── core-components/    # Feature-specific components
+│   ├── AppointmentDisplay.tsx
+│   ├── AppointmentHeader.tsx
+│   └── InfoDisplay.tsx
+├── data/
+│   ├── timeSlots.ts    # Available time slots
+│   └── timeAppointment.ts
+├── pages/
+│   ├── MainPage.tsx
+│   └── ScheduleSection.tsx
+└── App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎯 How to Use
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Creating an Appointment
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Select a date in the scheduling form
+2. Choose an available time slot
+3. Enter the client's name
+4. Click the "AGENDAR" (Schedule) button
+
+### Viewing Appointments
+
+1. Use the date picker in the header to select a date
+2. Appointments will be displayed organized by time periods
+3. Each period shows all scheduled appointments sorted by time
+
+### Canceling an Appointment
+
+1. Find the appointment you want to cancel
+2. Click the trash icon next to it
+3. Confirm the cancellation in the dialog
+
+## 🎨 UI Components
+
+### Core Components
+
+- **Button**: Primary action buttons with variants (default, disabled)
+- **ButtonIcon**: Icon-only buttons for actions
+- **Container**: Layout wrapper component
+- **Input**: Form input with icon support
+- **Text**: Typography component with multiple variants
+- **TimeSelect**: Time slot selector with active/default states
+
+### Feature Components
+
+- **ScheduleSection**: Appointment creation form
+- **AppointmentDisplay**: List of appointments by period
+- **AppointmentHeader**: Date selector and page title
+- **InfoDisplay**: Individual appointment item with delete action
+
+## 🔄 State Management
+
+The application uses React Context API for global state management:
+
+- **AppointmentContext**: Manages all appointments and provides CRUD operations
+- **Appointments Array**: Stores all scheduled appointments
+- **Selected Date**: Controls which date is being viewed
+
+## 📊 Data Models
+
+### Appointment Interface
+```typescript
+interface Appointment {
+    id: string
+    date: string        // ISO date format (YYYY-MM-DD)
+    time: string        // HH:MM format
+    clientName: string
+    period: string      // "Manhã" | "Tarde" | "Noite"
+}
 ```
+
+## 🎨 Design System
+
+### Time Periods
+- **Morning (Manhã)**: 09:00 - 12:00
+- **Afternoon (Tarde)**: 13:00 - 18:00
+- **Night (Noite)**: 19:00 - 21:00
+
+## 🚧 Future Enhancements
+
+- [ ] Persistent storage (localStorage or database)
+- [ ] User authentication
+- [ ] Multiple barbers support
+- [ ] Service type selection
+- [ ] Duration management
+- [ ] Notifications system
+- [ ] Export appointments to calendar
+- [ ] Customer phone number
+- [ ] Appointment history
