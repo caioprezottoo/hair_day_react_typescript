@@ -8,7 +8,7 @@ import TimeSelect from '../components/TimeSelect'
 import { TIME_SLOTS } from '../data/timeSlots'
 import { useState } from 'react'
 
-export default function PeriodSection() {
+export default function ScheduleSection() {
     const [selectedTime, setSelectedTime] = useState<string | null>(null)
 
     const handleTimeSelect = (time: string) => {

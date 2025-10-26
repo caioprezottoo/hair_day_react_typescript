@@ -1,11 +1,10 @@
 import SunHorizon from '../assets/icons/SunHorizon.svg?react'
 import CloudSun from '../assets/icons/CloudSun.svg?react'
 import MoonStars from '../assets/icons/MoonStars.svg?react'
-import Trash from '../assets/icons/Trash.svg?react'
 import Icon from '../components/Icon'
 import Text from '../components/Text'
 import { TIME_APPOINTMENT } from '../data/timeAppointment'
-import ButtonIcon from '../components/ButtonIcon'
+import InfoDisplay from './InfoDisplay'
 
 
 export default function TimeAppointmentHeader() {
@@ -30,13 +29,11 @@ export default function TimeAppointmentHeader() {
                         </div>
                         <Text as='p' variant={"text-sm"}>{times}</Text>
                     </div>
-                    <div className='border border-gray-600 mb-5 rounded-bl-lg rounded-br-lg flex items-center justify-between px-5 gap-5 p-4'>
-                        <div className='flex flex-row items-center gap-5'>
-                            <Text as='h1' variant={"title-md"}>11:00</Text>
-                            <Text as='p' variant={"text-md"}>Caio Prezotto</Text>
-                        </div>
-                        <ButtonIcon icon={Trash} className='border-3 border-transparent '/>
+                    <div className="border-b border-x border-gray-600 mb-5 rounded-bl-lg rounded-br-lg">
+                        <InfoDisplay />
+                        <InfoDisplay />
                     </div>
+
                 </div>
             ))}
         </div>

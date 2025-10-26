@@ -1,13 +1,13 @@
 import AppointmentSection from "./AppointmentSection";
-import PeriodSection from "./PeriodSection";
+import ScheduleSection from "./ScheduleSection";
 
 export default function MainPage() {
   return (
     <div className="flex h-screen">
-      <div className="p-4">
-        <PeriodSection />
+      <div className="p-4 fixed">
+        <ScheduleSection />
       </div>
-      <div className="flex-1 flex justify-center items-start">
+      <div className="flex-1 flex justify-center items-start ml-[29rem]">
         <AppointmentSection />
       </div>
     </div>
