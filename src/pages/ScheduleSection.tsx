@@ -7,13 +7,49 @@ import Button from '../components/Button'
 import TimeSelect from '../components/TimeSelect'
 import { TIME_SLOTS } from '../data/timeSlots'
 import { useState } from 'react'
+import { useAppointment } from '../contexts/AppointmentContext'
 
 export default function ScheduleSection() {
     const [selectedTime, setSelectedTime] = useState<string | null>(null)
+    const [scheduleDate, setScheduleDate] = useState<string>('')
+    const [clientName, setClientName] = useState<string>('')
+
+    const { createAppointment } = useAppointment()
 
     const handleTimeSelect = (time: string) => {
         setSelectedTime(time)
     }
+
+    const getPeriodFromTime = (time: string): string => {
+        const hour = parseInt(time.split(':')[0])
+        if (hour >= 9 && hour <= 12) return 'Manhã'
+        if (hour >= 13 && hour <= 18) return 'Tarde'
+        return 'Noite'
+    }
+
+    const handleSchedule = () => {
+        if (!scheduleDate || !selectedTime || !clientName.trim()) {
+            alert('Por favor, preencha todos os campos')
+            return
+        }
+
+        const period = getPeriodFromTime(selectedTime)
+
+        createAppointment({
+            date: scheduleDate,
+            time: selectedTime,
+            clientName: clientName.trim(),
+            period
+        })
+
+        setSelectedTime(null)
+        setScheduleDate('')
+        setClientName('')
+
+        alert('Agendamento criado com sucesso!')
+    }
+
+    const isFormValid = scheduleDate && selectedTime && clientName.trim()
 
     return (
         <Container className={`
@@ -28,7 +64,12 @@ export default function ScheduleSection() {
 
             <div className="w-full">
                 <Text variant={"title-md"}>Data</Text>
-                <Input icon={CalendarBlank} type='date' />
+                <Input
+                    icon={CalendarBlank}
+                    type='date'
+                    value={scheduleDate}
+                    onChange={(e) => setScheduleDate(e.target.value)}
+                />
             </div>
 
             <div>
@@ -55,11 +96,22 @@ export default function ScheduleSection() {
 
             <div className="w-full">
                 <Text variant={"title-md"}>Cliente</Text>
-                <Input icon={UserSquare} placeholder='Nome' />
+                <Input
+                    icon={UserSquare}
+                    placeholder='Nome'
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
+                />
             </div>
 
             <div>
-                <Button>AGENDAR</Button>
+                <Button
+                    variant={isFormValid ? "default" : "disabled"}
+                    disabled={!isFormValid}
+                    onClick={handleSchedule}
+                >
+                    AGENDAR
+                </Button>
             </div>
         </Container >
     )
